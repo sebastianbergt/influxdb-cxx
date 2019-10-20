@@ -45,7 +45,8 @@ void HTTP::enableBasicAuth(const std::string& auth)
 void HTTP::enableSsl()
 {
   CURL *curl = curlHandle.get();
-  curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+  curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
+  curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0); // when set to false works like unsafeSSL
 }
 
 void HTTP::deleteCurl(CURL * curl)
